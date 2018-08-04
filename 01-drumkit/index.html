@@ -60,6 +60,7 @@
 <script>
 
   window.addEventListener('keydown', function(event) {
+    console.log(event)
     const audio = document.querySelector(`audio[data-key='${event.keyCode}']`)
     const letterKey = document.querySelector(`div[data-key='${event.keyCode}']`); //(`.key[data-key='${event.keyCode}']`)
     if(!audio) return; // ends the function
@@ -72,6 +73,29 @@
     // setTimeout(function() {
     //   letterKey.classList.remove("playing");
     // }, 50)
+  })
+
+  // CLICK S/HIHAT WILL TRIGGER AUDIO - complete for rest of keys
+  window.addEventListener("click", function(event) {
+    let elementClicked = event.target;
+
+    if(elementClicked.textContent === "A") {
+      let audio = document.querySelector(`audio[data-key='65']`);
+      let letterKey = document.querySelector(`div[data-key='65']`);
+      
+      audio.currentTime = 0;
+      audio.play();
+      
+      letterKey.classList.add("playing");
+    } else if(elementClicked.textContent === "S") {
+      let audio = document.querySelector(`audio[data-key='83']`);
+      let letterKey = document.querySelector(`div[data-key='83']`);
+      
+      audio.currentTime = 0;
+      audio.play();
+      
+      letterKey.classList.add("playing");
+    }
   })
 
 
